@@ -1,20 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Bar code</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <h1>Click pour scanner</h1>
+
+  <ion-button color="secondary" (click)="scanCode()">Scan Code</ion-button>
+  <!-- <button ion-button round (click)="scanCode()">Scan Code</button> -->
+
+  <div *ngIf="scannedData">
+    <p>Scanned Code Text : <b>{{scannedData['text']}}</b></p>
+    <p>Scanned Code Format : <b>{{scannedData['format']}}</b></p>
   </div>
+
+
+
+  <h1>Click To Generate QR Code</h1>
+
+  <ion-input type="text" [(ngModel)]="encodeData"></ion-input>
+  <!-- <button ion-button (click)="encodedText()">Encode Text</button> -->
+  <ion-button color="success" (click)="encodedText()">Encode Text</ion-button>
+
+
 </ion-content>
